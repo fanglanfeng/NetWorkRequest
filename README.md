@@ -12,6 +12,13 @@
     
     
     
+    /**
+     *  封装的源生网络请求
+     *
+     *  @param data 需要传递进去的数据，可以为nil
+     *
+     *  @return 返回数据
+     */
     [tools sourceRequestMethod:@"GET" URLString:urlString parameters:nil success:^(id data) {
         NSLog(@"%@",data);
     } failure:^(NSError *error) {
