@@ -40,7 +40,7 @@ static NSString *urlString = @"http://mobile.gocent.net/m/homePageExt/listFloorE
  *  @param successObject 成功之后返回的数据
  *  @param failure       失败返回的错误
  */
--(void)sourceRequestMethod:(NSString *)method URLString:(NSString *)urlString parameters:(NSData *)parameters success:(void (^)(id))successObject failure:(void (^)(NSError *))failure;
+-(void)sourceRequestMethod:(NSString *)method URLString:(NSString *)urlString parameters:(NSData *)parameters success:(void (^)(id data))successObject failure:(void (^)(NSError *error))failure;
 
 #pragma mark - NetworkTools下面是直接封装好的网络请求方法，可以将请求的内容都放在这个方法里面，也可以做测试用
 

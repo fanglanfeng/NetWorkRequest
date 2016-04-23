@@ -87,7 +87,7 @@
 }
 
 ///封装源生中的网络请求数据
--(void)sourceRequestMethod:(NSString *)method URLString:(NSString *)urlString parameters:(NSData *)parameters success:(void (^)(id))successObject failure:(void (^)(NSError *))failure{
+-(void)sourceRequestMethod:(NSString *)method URLString:(NSString *)urlString parameters:(NSData *)parameters success:(void (^)(id data))successObject failure:(void (^)(NSError * error))failure{
     /**
      *  请求对象
      */
