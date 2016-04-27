@@ -20,6 +20,12 @@ static NSString *urlString = @"http://mobile.gocent.net/m/homePageExt/listFloorE
 ///单例对象
 +(instancetype)shareNetworkTool;
 
+
+/**
+ *  返回链接的网络状态
+ */
+-(NSString *)monitorNetworkStatus;
+
 /**
  *  封装的AFN的网络请求，主要是做网络剥离，防止后期网络方法的变更
  *
@@ -32,6 +38,33 @@ static NSString *urlString = @"http://mobile.gocent.net/m/homePageExt/listFloorE
 -(void)AFNRequestMethod:(NSString *)requestMethod URLString:(NSString *)urlString parameters:(id)parameters success:(void (^)(id data))successObject failure:(void(^)(NSError * error))failure;
 
 /**
+ *  封装的AFN的网络请求，主要是处理返回的是XML数据类型和plist数据
+ *
+ *  @param requestMethod 请求方式 GET&POST
+ *  @param urlString     请求的URL
+ *  @param parameters    传递进去的数据,可以为nil
+ *  @param successObject 成功之后返回的数据
+ *  @param failure       失败返回的错误
+ *  @param XMLWithPlist  返回的数据类型
+ */
+-(void)AFNRequestMethod:(NSString *)requestMethod URLString:(NSString *)urlString parameters:(id)parameters success:(void (^)(id))successObject failure:(void(^)(NSError *))failure dataType:(NSString *)XMLWithPlist;
+
+/**
+ *  POST上传，可以在里面设置上传本地文件的地址，也可以自己增加
+ *
+ *  @param urlString 上传地址
+ *  @param success   成功回调
+ *  @param failure   失败回调
+ */
+-(void)postUploadWithURLString:(NSString *)urlString success:(void(^)(id data))success failure:(void(^)(NSError *error))failure;
+
+/**
+ *  下载操作
+ *  @param urlString 下载地址
+ */
+-(void)downloadWithURLString:(NSString *)urlString;
+
+/**
  *  源生方法的网络请求
  *
  *  @param method        请求方式 GET&POST
@@ -40,7 +73,7 @@ static NSString *urlString = @"http://mobile.gocent.net/m/homePageExt/listFloorE
  *  @param successObject 成功之后返回的数据
  *  @param failure       失败返回的错误
  */
--(void)sourceRequestMethod:(NSString *)method URLString:(NSString *)urlString parameters:(NSData *)parameters success:(void (^)(id data))successObject failure:(void (^)(NSError *error))failure;
+-(void)sourceRequestMethod:(NSString *)method URLString:(NSString *)urlString parameters:(NSData *)parameters success:(void (^)(id))successObject failure:(void (^)(NSError *))failure;
 
 #pragma mark - NetworkTools下面是直接封装好的网络请求方法，可以将请求的内容都放在这个方法里面，也可以做测试用
 
